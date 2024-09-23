@@ -5,6 +5,9 @@ from nextcord.ext import commands
 import os
 from dotenv import load_dotenv
 import logging
+import sys
+import signal
+import asyncio
 
 # Load environment variables
 load_dotenv()
@@ -50,12 +53,6 @@ async def on_command_error(ctx, error):
     else:
         logging.error(f'Unhandled exception: {error}', exc_info=True)
         await ctx.send("An error occurred while processing the command.")
-        
-async def handle_health(request):
-    return web.Response(text="Bot is running.")
-
-app = web.Application()
-app.add_routes([web.get('/health', handle_health)])
 
 if __name__ == '__main__':
     for extension in initial_extensions:
@@ -65,4 +62,18 @@ if __name__ == '__main__':
         except Exception as e:
             logging.error(f'Failed to load extension {extension}.', exc_info=True)
 
-    bot.run(TOKEN)
+    # Graceful shutdown handling
+    def shutdown(signal, frame):
+        logging.info("Shutting down bot...")
+        asyncio.create_task(bot.close())
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, shutdown)
+    signal.signal(signal.SIGTERM, shutdown)
+
+    try:
+        bot.run(TOKEN)
+    except nextcord.LoginFailure:
+        logging.error("Invalid Discord token.")
+    except Exception as e:
+        logging.error("An unexpected error occurred.", exc_info=True)
