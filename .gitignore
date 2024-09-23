@@ -1,2 +1,18 @@
+
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+
+# Virtual environment
+venv/
+ENV/
+env/
 nextcord/
+
+#environment variables
 .env

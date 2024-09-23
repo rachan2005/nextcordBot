@@ -1,0 +1,11 @@
+# docker-compose.yml
+
+version: 'latest'
+
+services:
+  nextcordbot:
+    build: .
+    container_name: bot
+    env_file:
+      - .env
+    restart: unless-stopped
