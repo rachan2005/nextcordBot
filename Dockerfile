@@ -15,8 +15,19 @@ RUN pip install -r requirements.txt
 # Copy project
 COPY . .
 
+<<<<<<< HEAD
 # Set the PYTHONPATH to /app to ensure Python can find the 'bot' package
 ENV PYTHONPATH=/app
 
+=======
+
+
+# Set the PYTHONPATH to /app to ensure Python can find the 'bot' package
+ENV PYTHONPATH=/app
+
+# Expose port for health checks
+EXPOSE 8080
+
+>>>>>>> b30c47fdb6de4f462d1fd6f14d0a1581a053a597
 # Command to run the bot using module execution
 CMD ["python", "-m", "bot.main"]

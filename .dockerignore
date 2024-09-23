@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+nextcord/
+ENV/
+env/
+.git/
+.gitignore
+README.md
