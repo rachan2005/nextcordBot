@@ -1,5 +1,3 @@
-# bot/main.py
-
 import nextcord
 from nextcord.ext import commands
 import os
@@ -8,6 +6,9 @@ import logging
 import sys
 import signal
 import asyncio
+
+from bot.utils.database import engine
+from bot.models.user_settings import Base  # Import your models here
 
 # Load environment variables
 load_dotenv()
@@ -55,25 +56,38 @@ async def on_command_error(ctx, error):
         await ctx.send("An error occurred while processing the command.")
 
 if __name__ == '__main__':
-    for extension in initial_extensions:
-        try:
-            bot.load_extension(extension)
-            logging.info(f'Loaded extension {extension}')
-        except Exception as e:
-            logging.error(f'Failed to load extension {extension}.', exc_info=True)
+    async def init_db():
+        async with engine.begin() as conn:
+            # Import all models here
+            await conn.run_sync(Base.metadata.create_all)
+        logging.info("Database initialized.")
 
-    # Graceful shutdown handling
-    def shutdown(signal, frame):
+    async def load_extensions():
+        for extension in initial_extensions:
+            try:
+                await bot.load_extension(extension)
+                logging.info(f'Loaded extension {extension}')
+            except Exception as e:
+                logging.error(f'Failed to load extension {extension}.', exc_info=True)
+
+    async def shutdown(signal, frame):
         logging.info("Shutting down bot...")
-        asyncio.create_task(bot.close())
+        await bot.close()
         sys.exit(0)
 
-    signal.signal(signal.SIGINT, shutdown)
-    signal.signal(signal.SIGTERM, shutdown)
+    # Register signal handlers for graceful shutdown
+    loop = asyncio.get_event_loop()
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        loop.add_signal_handler(sig, lambda s=sig: asyncio.create_task(shutdown(s, None)))
 
-    try:
-        bot.run(TOKEN)
-    except nextcord.LoginFailure:
-        logging.error("Invalid Discord token.")
-    except Exception as e:
-        logging.error("An unexpected error occurred.", exc_info=True)
+    async def main():
+        await init_db()
+        await load_extensions()
+        try:
+            await bot.start(TOKEN)
+        except nextcord.LoginFailure:
+            logging.error("Invalid Discord token.")
+        except Exception as e:
+            logging.error("An unexpected error occurred.", exc_info=True)
+
+    loop.run_until_complete(main())

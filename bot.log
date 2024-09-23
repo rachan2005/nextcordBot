@@ -1,0 +1,44 @@
+2024-09-23 17:41:38,457:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 17:41:38,458:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:41:38,460:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 17:41:38,461:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:41:38,462:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 17:41:38,462:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:41:38,463:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 17:41:38,465:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 17:41:38,466:INFO:sqlalchemy.engine.Engine: [generated in 0.00040s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 17:41:38,471:INFO:sqlalchemy.engine.Engine: 
+CREATE TABLE user_settings (
+	user_id SERIAL NOT NULL, 
+	favorite_color VARCHAR, 
+	timezone VARCHAR, 
+	PRIMARY KEY (user_id)
+)
+
+
+2024-09-23 17:41:38,471:INFO:sqlalchemy.engine.Engine: [no key 0.00047s] ()
+2024-09-23 17:41:38,484:INFO:sqlalchemy.engine.Engine: CREATE INDEX ix_user_settings_user_id ON user_settings (user_id)
+2024-09-23 17:41:38,485:INFO:sqlalchemy.engine.Engine: [no key 0.00105s] ()
+2024-09-23 17:41:38,487:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 17:41:38,488:INFO:root: Database initialized.
+2024-09-23 17:41:38,498:INFO:root: ExampleCog initialized.
+2024-09-23 17:41:38,498:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 17:41:38,505:INFO:root: Greetings Cog initialized.
+2024-09-23 17:41:38,505:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 17:41:38,506:INFO:nextcord.client: logging in using static token
+2024-09-23 17:41:39,359:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 17:41:39,734:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-b-0cm0",{"micros":93861,"calls":["id_created",{"micros":801,"calls":[]},"session_lookup_time",{"micros":330,"calls":[]},"session_lookup_finished",{"micros":13,"calls":[]},"discord-sessions-prd-1-199",{"micros":92392,"calls":["start_session",{"micros":66088,"calls":["discord-api-rpc-777c8bcd74-jhrhq",{"micros":62216,"calls":["get_user",{"micros":4885},"get_guilds",{"micros":4954},"send_scheduled_deletion_message",{"micros":6},"guild_join_requests",{"micros":1},"authorized_ip_coro",{"micros":7}]}]},"starting_guild_connect",{"micros":72,"calls":[]},"presence_started",{"micros":390,"calls":[]},"guilds_started",{"micros":194,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":25618,"calls":[]},"connect_finished",{"micros":25624,"calls":[]},"build_ready",{"micros":19,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":0,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: e2643123536cde691815ab1297e388d6). Resume URL specified as wss://gateway-us-east1-b.discord.gg
+2024-09-23 17:41:41,918:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 17:41:41,918:INFO:root: ------
+2024-09-23 17:47:48,721:INFO:root: Shutting down bot...
+2024-09-23 17:47:48,722:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
