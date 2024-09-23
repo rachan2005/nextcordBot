@@ -1,7 +1,4 @@
-# bot/cogs/example_cog.py
-
 from nextcord.ext import commands
-import nextcord
 import logging
 
 class ExampleCog(commands.Cog):

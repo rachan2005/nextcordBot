@@ -1,7 +1,4 @@
-# bot/cogs/greetings.py
-
 from nextcord.ext import commands
-import nextcord
 import logging
 
 class Greetings(commands.Cog):
