@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nextcordbot:
     build: .
@@ -9,10 +7,11 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+      - ollama
     ports:
-      - "8080:8080"
+      - "8080:8080"  # If implementing health checks
     volumes:
-      - .:/app
+      - .:/app  # Mount current directory for live development (optional)
 
   db:
     image: postgres:14
@@ -26,5 +25,18 @@ services:
     ports:
       - "5432:5432"
 
+  ollama:
+    image: ollama/ollama:latest  # Ensure this is the correct image
+    container_name: ollama
+    environment:
+      - OLLAMA_API_KEY=your_ollama_api_key  # If required
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+    volumes:
+      - ollama-data:/ollama/data  # Persist Ollama data
+    # Add any other required configurations as per Ollama's docs
+
 volumes:
   db-data:
+  ollama-data:

@@ -42,3 +42,258 @@ TypeError: object NoneType can't be used in 'await' expression
 2024-09-23 17:41:41,918:INFO:root: ------
 2024-09-23 17:47:48,721:INFO:root: Shutting down bot...
 2024-09-23 17:47:48,722:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 17:47:52,029:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 17:47:52,029:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:47:52,031:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 17:47:52,031:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:47:52,032:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 17:47:52,033:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 17:47:52,033:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 17:47:52,035:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 17:47:52,036:INFO:sqlalchemy.engine.Engine: [generated in 0.00044s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 17:47:52,037:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 17:47:52,038:INFO:root: Database initialized.
+2024-09-23 17:47:52,048:INFO:root: ExampleCog initialized.
+2024-09-23 17:47:52,049:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 17:47:52,056:INFO:root: Greetings Cog initialized.
+2024-09-23 17:47:52,056:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 17:47:52,058:INFO:nextcord.client: logging in using static token
+2024-09-23 17:47:53,004:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 17:47:53,376:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-d-0kmt",{"micros":95775,"calls":["id_created",{"micros":932,"calls":[]},"session_lookup_time",{"micros":4688,"calls":[]},"session_lookup_finished",{"micros":16,"calls":[]},"discord-sessions-prd-1-144",{"micros":88789,"calls":["start_session",{"micros":40595,"calls":["discord-api-continuous-canary-rpc-8cb6f7dc4-r8wl7",{"micros":36611,"calls":["get_user",{"micros":5083},"get_guilds",{"micros":2983},"send_scheduled_deletion_message",{"micros":7},"guild_join_requests",{"micros":499},"authorized_ip_coro",{"micros":22}]}]},"starting_guild_connect",{"micros":59,"calls":[]},"presence_started",{"micros":23368,"calls":[]},"guilds_started",{"micros":172,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":24565,"calls":[]},"connect_finished",{"micros":24571,"calls":[]},"build_ready",{"micros":18,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":1,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: 8e27e592fe9d793b765a9b9a20be670d). Resume URL specified as wss://gateway-us-east1-d.discord.gg
+2024-09-23 17:47:55,396:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 17:47:55,396:INFO:root: ------
+2024-09-23 18:00:12,443:INFO:root: Shutting down bot...
+2024-09-23 18:00:12,444:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:00:14,437:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:00:14,437:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:00:14,439:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:00:14,439:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:00:14,441:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:00:14,441:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:00:14,442:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:00:14,445:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:00:14,445:INFO:sqlalchemy.engine.Engine: [generated in 0.00067s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:00:14,447:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:00:14,448:INFO:root: Database initialized.
+2024-09-23 18:00:14,467:INFO:root: ExampleCog initialized.
+2024-09-23 18:00:14,467:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:00:14,476:INFO:root: Greetings Cog initialized.
+2024-09-23 18:00:14,476:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:00:14,478:INFO:nextcord.client: logging in using static token
+2024-09-23 18:00:15,504:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:00:15,879:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-b-knqh",{"micros":97920,"calls":["id_created",{"micros":907,"calls":[]},"session_lookup_time",{"micros":1368,"calls":[]},"session_lookup_finished",{"micros":13,"calls":[]},"discord-sessions-prd-1-97",{"micros":95296,"calls":["start_session",{"micros":60582,"calls":["discord-api-rpc-777c8bcd74-hhbb6",{"micros":56794,"calls":["get_user",{"micros":15154},"get_guilds",{"micros":3274},"send_scheduled_deletion_message",{"micros":6},"guild_join_requests",{"micros":0},"authorized_ip_coro",{"micros":8}]}]},"starting_guild_connect",{"micros":66,"calls":[]},"presence_started",{"micros":3715,"calls":[]},"guilds_started",{"micros":172,"calls":[]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":30727,"calls":[]},"connect_finished",{"micros":30733,"calls":[]},"build_ready",{"micros":21,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":1,"calls":[]},"split_ready",{"micros":0,"calls":[]}]}]}] (Session ID: 6f96d6296ae36839567a9f56894570c3). Resume URL specified as wss://gateway-us-east1-b.discord.gg
+2024-09-23 18:00:18,054:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:00:18,054:INFO:root: ------
+2024-09-23 18:06:52,542:INFO:root: Shutting down bot...
+2024-09-23 18:06:52,543:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:06:54,472:WARNING:nextcord.client: PyNaCl is not installed, voice will NOT be supported
+2024-09-23 18:06:54,493:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:06:54,493:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:06:54,494:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:06:54,495:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:06:54,495:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:06:54,495:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:06:54,496:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:06:54,499:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:06:54,499:INFO:sqlalchemy.engine.Engine: [generated in 0.00037s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:06:54,500:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:06:54,501:INFO:root: Database initialized.
+2024-09-23 18:06:54,510:INFO:root: ExampleCog initialized.
+2024-09-23 18:06:54,510:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:06:54,515:INFO:root: Greetings Cog initialized.
+2024-09-23 18:06:54,515:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 68, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:06:54,516:INFO:nextcord.client: logging in using static token
+2024-09-23 18:06:55,346:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:06:55,688:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-b-psz9",{"micros":63702,"calls":["id_created",{"micros":645,"calls":[]},"session_lookup_time",{"micros":271,"calls":[]},"session_lookup_finished",{"micros":21,"calls":[]},"discord-sessions-prd-1-43",{"micros":62522,"calls":["start_session",{"micros":40413,"calls":["discord-api-rpc-777c8bcd74-zcv4s",{"micros":35049,"calls":["get_user",{"micros":5286},"get_guilds",{"micros":2998},"send_scheduled_deletion_message",{"micros":7},"guild_join_requests",{"micros":1238},"authorized_ip_coro",{"micros":9}]}]},"starting_guild_connect",{"micros":68,"calls":[]},"presence_started",{"micros":1193,"calls":[]},"guilds_started",{"micros":137,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":20678,"calls":[]},"connect_finished",{"micros":20684,"calls":[]},"build_ready",{"micros":21,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":0,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: f2295e4ea3e6632ecee43a7315e3c500). Resume URL specified as wss://gateway-us-east1-b.discord.gg
+2024-09-23 18:06:59,596:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:06:59,597:INFO:root: ------
+2024-09-23 18:15:46,819:INFO:root: Shutting down bot...
+2024-09-23 18:15:46,820:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:15:48,326:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:15:48,327:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:15:48,328:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:15:48,329:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:15:48,331:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:15:48,331:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:15:48,332:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:15:48,336:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:15:48,337:INFO:sqlalchemy.engine.Engine: [generated in 0.00055s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:15:48,340:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:15:48,341:INFO:root: Database initialized.
+2024-09-23 18:15:48,357:INFO:root: ExampleCog initialized.
+2024-09-23 18:15:48,357:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:15:48,366:INFO:root: Greetings Cog initialized.
+2024-09-23 18:15:48,367:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:15:48,381:INFO:root: UserSettings Cog initialized.
+2024-09-23 18:15:48,381:ERROR:root: Failed to load extension bot.cogs.user_settings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:15:48,442:INFO:root: LLM Cog initialized.
+2024-09-23 18:15:48,442:ERROR:root: Failed to load extension bot.cogs.llm.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:15:48,444:INFO:nextcord.client: logging in using static token
+2024-09-23 18:15:49,309:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:15:49,687:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-d-z77r",{"micros":99360,"calls":["id_created",{"micros":1580,"calls":[]},"session_lookup_time",{"micros":2322,"calls":[]},"session_lookup_finished",{"micros":17,"calls":[]},"discord-sessions-prd-1-243",{"micros":95065,"calls":["start_session",{"micros":36614,"calls":["discord-api-rpc-777c8bcd74-thgpm",{"micros":32798,"calls":["get_user",{"micros":5450},"get_guilds",{"micros":2618},"send_scheduled_deletion_message",{"micros":7},"guild_join_requests",{"micros":993},"authorized_ip_coro",{"micros":8}]}]},"starting_guild_connect",{"micros":67,"calls":[]},"presence_started",{"micros":14987,"calls":[]},"guilds_started",{"micros":161,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":43205,"calls":[]},"connect_finished",{"micros":43211,"calls":[]},"build_ready",{"micros":19,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":0,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: cf3ff286bfacb05336afa0cfc735dcef). Resume URL specified as wss://gateway-us-east1-d.discord.gg
+2024-09-23 18:15:51,863:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:15:51,864:INFO:root: ------
+2024-09-23 18:18:30,741:INFO:root: Shutting down bot...
+2024-09-23 18:18:30,743:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:35:22,766:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:35:22,766:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:35:22,769:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:35:22,769:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:35:22,770:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:35:22,770:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:35:22,771:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:35:22,774:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:35:22,774:INFO:sqlalchemy.engine.Engine: [generated in 0.00031s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:35:22,781:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:35:22,781:INFO:root: Database initialized.
+2024-09-23 18:35:22,795:INFO:root: ExampleCog initialized.
+2024-09-23 18:35:22,795:ERROR:root: Failed to load extension bot.cogs.example_cog.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:35:22,804:INFO:root: Greetings Cog initialized.
+2024-09-23 18:35:22,804:ERROR:root: Failed to load extension bot.cogs.greetings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:35:22,810:INFO:root: UserSettings Cog initialized.
+2024-09-23 18:35:22,810:ERROR:root: Failed to load extension bot.cogs.user_settings.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:35:22,885:INFO:root: LLM Cog initialized.
+2024-09-23 18:35:22,885:ERROR:root: Failed to load extension bot.cogs.llm.
+Traceback (most recent call last):
+  File "/app/bot/main.py", line 72, in load_extensions
+    await bot.load_extension(extension)
+TypeError: object NoneType can't be used in 'await' expression
+2024-09-23 18:35:22,886:INFO:nextcord.client: logging in using static token
+2024-09-23 18:35:23,739:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:35:24,105:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-c-jx3r",{"micros":91300,"calls":["id_created",{"micros":1212,"calls":[]},"session_lookup_time",{"micros":276,"calls":[]},"session_lookup_finished",{"micros":20,"calls":[]},"discord-sessions-prd-1-131",{"micros":89270,"calls":["start_session",{"micros":81639,"calls":["discord-api-rpc-777c8bcd74-qkjvs",{"micros":73563,"calls":["get_user",{"micros":8726},"get_guilds",{"micros":2925},"send_scheduled_deletion_message",{"micros":7},"guild_join_requests",{"micros":514},"authorized_ip_coro",{"micros":11}]}]},"starting_guild_connect",{"micros":78,"calls":[]},"presence_started",{"micros":697,"calls":[]},"guilds_started",{"micros":161,"calls":[]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":6660,"calls":[]},"connect_finished",{"micros":6666,"calls":[]},"build_ready",{"micros":24,"calls":[]},"clean_ready",{"micros":1,"calls":[]},"optimize_ready",{"micros":0,"calls":[]},"split_ready",{"micros":0,"calls":[]}]}]}] (Session ID: 241b43d185afcdf626161561f25462f3). Resume URL specified as wss://gateway-us-east1-c.discord.gg
+2024-09-23 18:35:26,284:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:35:26,285:INFO:root: ------
+2024-09-23 18:38:27,284:ERROR:root: HTTP error occurred: Client error '404 Not Found' for url 'http://ollama:11434/generate'
+For more information check: https://httpstatuses.com/404
+2024-09-23 18:42:11,624:INFO:root: Shutting down bot...
+2024-09-23 18:42:11,626:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:42:12,991:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:42:12,992:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:42:12,994:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:42:12,994:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:42:12,995:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:42:12,995:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:42:12,996:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:42:12,998:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:42:12,999:INFO:sqlalchemy.engine.Engine: [generated in 0.00033s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:42:13,000:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:42:13,001:INFO:root: Database initialized.
+2024-09-23 18:42:13,010:INFO:root: ExampleCog initialized.
+2024-09-23 18:42:13,010:INFO:root: Loaded extension bot.cogs.example_cog
+2024-09-23 18:42:13,014:INFO:root: Greetings Cog initialized.
+2024-09-23 18:42:13,014:INFO:root: Loaded extension bot.cogs.greetings
+2024-09-23 18:42:13,019:INFO:root: UserSettings Cog initialized.
+2024-09-23 18:42:13,019:INFO:root: Loaded extension bot.cogs.user_settings
+2024-09-23 18:42:13,063:INFO:root: LLM Cog initialized.
+2024-09-23 18:42:13,063:INFO:root: Loaded extension bot.cogs.llm
+2024-09-23 18:42:13,063:INFO:nextcord.client: logging in using static token
+2024-09-23 18:42:13,922:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:42:14,272:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-c-kt0c",{"micros":74898,"calls":["id_created",{"micros":1460,"calls":[]},"session_lookup_time",{"micros":622,"calls":[]},"session_lookup_finished",{"micros":16,"calls":[]},"discord-sessions-prd-1-23",{"micros":71264,"calls":["start_session",{"micros":46237,"calls":["discord-api-rpc-777c8bcd74-s5g9d",{"micros":39671,"calls":["get_user",{"micros":5306},"get_guilds",{"micros":5165},"send_scheduled_deletion_message",{"micros":7},"guild_join_requests",{"micros":329},"authorized_ip_coro",{"micros":7}]}]},"starting_guild_connect",{"micros":61,"calls":[]},"presence_started",{"micros":12274,"calls":[]},"guilds_started",{"micros":144,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":12522,"calls":[]},"connect_finished",{"micros":12527,"calls":[]},"build_ready",{"micros":17,"calls":[]},"clean_ready",{"micros":0,"calls":[]},"optimize_ready",{"micros":1,"calls":[]},"split_ready",{"micros":0,"calls":[]}]}]}] (Session ID: 0e269a6cea303ec61d17fc9cf300e5ff). Resume URL specified as wss://gateway-us-east1-c.discord.gg
+2024-09-23 18:42:16,299:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:42:16,300:INFO:root: ------
+2024-09-23 18:57:37,409:INFO:root: Shutting down bot...
+2024-09-23 18:57:37,411:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 18:57:38,824:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 18:57:38,825:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:57:38,826:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 18:57:38,826:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:57:38,828:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 18:57:38,828:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 18:57:38,829:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 18:57:38,832:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 18:57:38,832:INFO:sqlalchemy.engine.Engine: [generated in 0.00035s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 18:57:38,833:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 18:57:38,834:INFO:root: Database initialized.
+2024-09-23 18:57:38,840:INFO:nextcord.client: logging in using static token
+2024-09-23 18:57:39,786:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 18:57:40,140:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-b-svlp",{"micros":77814,"calls":["id_created",{"micros":780,"calls":[]},"session_lookup_time",{"micros":294,"calls":[]},"session_lookup_finished",{"micros":15,"calls":[]},"discord-sessions-prd-1-127",{"micros":75908,"calls":["start_session",{"micros":53208,"calls":["discord-api-rpc-777c8bcd74-5wwc2",{"micros":43146,"calls":["get_user",{"micros":7606},"get_guilds",{"micros":3647},"send_scheduled_deletion_message",{"micros":6},"guild_join_requests",{"micros":0},"authorized_ip_coro",{"micros":11}]}]},"starting_guild_connect",{"micros":76,"calls":[]},"presence_started",{"micros":9215,"calls":[]},"guilds_started",{"micros":172,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":13204,"calls":[]},"connect_finished",{"micros":13210,"calls":[]},"build_ready",{"micros":21,"calls":[]},"clean_ready",{"micros":0,"calls":[]},"optimize_ready",{"micros":1,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: 329fe5d57ef6850c02ac834aa23ac181). Resume URL specified as wss://gateway-us-east1-b.discord.gg
+2024-09-23 18:57:42,158:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 18:57:42,159:INFO:root: ------
+2024-09-23 19:01:12,348:INFO:root: Shutting down bot...
+2024-09-23 19:01:12,348:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.
+2024-09-23 19:01:13,679:INFO:sqlalchemy.engine.Engine: select pg_catalog.version()
+2024-09-23 19:01:13,680:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 19:01:13,681:INFO:sqlalchemy.engine.Engine: select current_schema()
+2024-09-23 19:01:13,681:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 19:01:13,682:INFO:sqlalchemy.engine.Engine: show standard_conforming_strings
+2024-09-23 19:01:13,682:INFO:sqlalchemy.engine.Engine: [raw sql] ()
+2024-09-23 19:01:13,683:INFO:sqlalchemy.engine.Engine: BEGIN (implicit)
+2024-09-23 19:01:13,686:INFO:sqlalchemy.engine.Engine: SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR(64) COLLATE "C" AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR(64) COLLATE "C"
+2024-09-23 19:01:13,686:INFO:sqlalchemy.engine.Engine: [generated in 0.00047s] ('user_settings', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-09-23 19:01:13,688:INFO:sqlalchemy.engine.Engine: COMMIT
+2024-09-23 19:01:13,688:INFO:root: Database initialized.
+2024-09-23 19:01:13,694:INFO:nextcord.client: logging in using static token
+2024-09-23 19:01:14,585:INFO:nextcord.gateway: Shard ID None has sent the IDENTIFY payload.
+2024-09-23 19:01:14,951:INFO:nextcord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-us-east1-c-4f69",{"micros":82246,"calls":["id_created",{"micros":1063,"calls":[]},"session_lookup_time",{"micros":3745,"calls":[]},"session_lookup_finished",{"micros":16,"calls":[]},"discord-sessions-prd-1-80",{"micros":77105,"calls":["start_session",{"micros":46560,"calls":["discord-api-rpc-777c8bcd74-jxk7j",{"micros":42353,"calls":["get_user",{"micros":5775},"get_guilds",{"micros":4522},"send_scheduled_deletion_message",{"micros":8},"guild_join_requests",{"micros":2478},"authorized_ip_coro",{"micros":10}]}]},"starting_guild_connect",{"micros":64,"calls":[]},"presence_started",{"micros":22219,"calls":[]},"guilds_started",{"micros":179,"calls":[]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":8025,"calls":[]},"connect_finished",{"micros":8032,"calls":[]},"build_ready",{"micros":24,"calls":[]},"clean_ready",{"micros":0,"calls":[]},"optimize_ready",{"micros":1,"calls":[]},"split_ready",{"micros":1,"calls":[]}]}]}] (Session ID: 22919c89b6d3ba6279c571d318fb2035). Resume URL specified as wss://gateway-us-east1-c.discord.gg
+2024-09-23 19:01:16,967:INFO:root: Logged in as SHADOW.#7995 (ID: 1125888676690395149)
+2024-09-23 19:01:16,967:INFO:root: ------
+2024-09-23 19:06:02,671:INFO:root: Shutting down bot...
+2024-09-23 19:06:02,671:INFO:nextcord.gateway: Websocket closed with 1000, cannot reconnect.

@@ -1,3 +1,5 @@
+# bot/main.py
+
 import nextcord
 from nextcord.ext import commands
 import os
@@ -37,6 +39,8 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 initial_extensions = [
     'bot.cogs.example_cog',
     'bot.cogs.greetings',
+    'bot.cogs.user_settings',
+    'bot.cogs.llm',  # Newly added LLM cog
     # Add other cogs here
 ]
 
@@ -65,10 +69,11 @@ if __name__ == '__main__':
     async def load_extensions():
         for extension in initial_extensions:
             try:
-                await bot.load_extension(extension)
+                bot.load_extension(extension)
                 logging.info(f'Loaded extension {extension}')
             except Exception as e:
                 logging.error(f'Failed to load extension {extension}.', exc_info=True)
+
 
     async def shutdown(signal, frame):
         logging.info("Shutting down bot...")
@@ -82,12 +87,13 @@ if __name__ == '__main__':
 
     async def main():
         await init_db()
-        await load_extensions()
+        load_extensions()
         try:
             await bot.start(TOKEN)
         except nextcord.LoginFailure:
             logging.error("Invalid Discord token.")
         except Exception as e:
             logging.error("An unexpected error occurred.", exc_info=True)
+
 
     loop.run_until_complete(main())
