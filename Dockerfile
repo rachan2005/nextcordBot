@@ -1,4 +1,3 @@
-# Use an official Python runtime as a parent image
 FROM python:3.11-slim
 
 # Set environment variables
@@ -16,8 +15,13 @@ RUN pip install -r requirements.txt
 # Copy project
 COPY . .
 
-# Expose any ports if necessary (not required for Discord bot)
-# EXPOSE 8080
 
-# Command to run the bot
-CMD ["python", "bot/main.py"]
+
+# Set the PYTHONPATH to /app to ensure Python can find the 'bot' package
+ENV PYTHONPATH=/app
+
+# Expose port for health checks
+EXPOSE 8080
+
+# Command to run the bot using module execution
+CMD ["python", "-m", "bot.main"]
