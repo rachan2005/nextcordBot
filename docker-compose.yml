@@ -1,7 +1,9 @@
+version: '3.8'
+
 services:
   nextcordbot:
     build: .
-    container_name: bot
+    container_name: nextcordbot
     env_file:
       - .env
     restart: unless-stopped
@@ -9,9 +11,14 @@ services:
       - db
       - ollama
     ports:
-      - "8080:8080"  # If implementing health checks
+      - "8080:8080"  # Adjust if needed
     volumes:
-      - .:/app  # Mount current directory for live development (optional)
+      - .:/app  # Mount current directory if necessary
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
   db:
     image: postgres:14
@@ -26,16 +33,27 @@ services:
       - "5432:5432"
 
   ollama:
-    image: ollama/ollama:latest  # Ensure this is the correct image
+    image: ollama/ollama:latest
     container_name: ollama
     environment:
-      - OLLAMA_API_KEY=your_ollama_api_key  # If required
+      - OLLAMA_API_KEY=your_ollama_api_key_here
     ports:
       - "11434:11434"
     restart: unless-stopped
     volumes:
-      - ollama-data:/ollama/data  # Persist Ollama data
-    # Add any other required configurations as per Ollama's docs
+      - ollama-data:/ollama/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [compute, utility]
 
 volumes:
   db-data:
