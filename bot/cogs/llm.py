@@ -6,6 +6,10 @@ import asyncio
 import json
 from nextcord.ext import commands
 from nextcord import Embed
+import logging
+
+# Create a logger for the cog
+logger = logging.getLogger(__name__)
 
 class LLMCog(commands.Cog):
     def __init__(self, bot):
@@ -26,34 +30,41 @@ class LLMCog(commands.Cog):
             payload = {
                 "model": self.model,
                 "prompt": question,
-                "max_tokens": 2000,
+                "max_tokens": 10000,  # Increase max_tokens if necessary
                 "temperature": 0.7,
                 "stream": False
             }
+            logger.info(f"Sending request to Ollama API: {json.dumps(payload)}")
             response = await self.client.post(
-                f"{self.api_url}/api/generate",  # Corrected endpoint
+                f"{self.api_url}/api/generate",
                 json=payload,
                 headers={
                     "Authorization": f"Bearer {self.api_key}" if self.api_key else "",
                     "Content-Type": "application/json"
                 }
             )
+            logger.info(f"Received response from Ollama API: {response.status_code}")
             response.raise_for_status()
             data = response.json()
+            logger.debug(f"Response JSON: {json.dumps(data)}")
             completion = data.get('response', 'No response.')
-            await ctx.send(completion)
+            # Split the response if it's longer than 2000 characters
+            if len(completion) > 350:
+                chunks = [completion[i:i+350] for i in range(0, len(completion), 350)]
+                for chunk in chunks:
+                    await ctx.send(chunk)
+                    await asyncio.sleep(3)
+            else:
+                await ctx.send(completion)
         except httpx.HTTPStatusError as e:
+            logger.error(f"HTTP status error: {e.response.status_code} - {e.response.text}")
             await ctx.send("Sorry, I couldn't process your request due to an HTTP error.")
-            self.bot.logger.error(f"HTTP error occurred: {e}")
+        except httpx.RequestError as e:
+            logger.error(f"Request error: {e}")
+            await ctx.send("Sorry, I couldn't process your request due to a network error.")
         except Exception as e:
+            logger.error(f"Unexpected error: {e}", exc_info=True)
             await ctx.send("⚠️ An unexpected error occurred while processing your command.")
-            self.bot.logger.error(f"Unexpected error: {e}", exc_info=True)
-
-    # Similarly update the summarize command
-
-
-    # Similarly update the summarize command
-
 
     @commands.command(name='summarize')
     async def summarize_llm(self, ctx, *, text: str):
@@ -61,30 +72,43 @@ class LLMCog(commands.Cog):
         await ctx.trigger_typing()
         try:
             prompt = f"Summarize the following text:\n{text}"
+            payload = {
+                "model": self.model,
+                "prompt": prompt,
+                "max_tokens": 1500,  # Increase max_tokens if necessary
+                "temperature": 0.5,
+                "stream": False
+            }
+            logger.info(f"Sending summarize request to Ollama API: {json.dumps(payload)}")
             response = await self.client.post(
-                f"{self.api_url}/api/generate",  # Corrected endpoint based on the API documentation
-                json={
-                    "model": self.model,
-                    "prompt": prompt,
-                    "max_tokens": 150,
-                    "temperature": 0.5,
-                    "stream": False  # Set to True if you want streaming responses
-                },
+                f"{self.api_url}/api/generate",
+                json=payload,
                 headers={
                     "Authorization": f"Bearer {self.api_key}" if self.api_key else "",
                     "Content-Type": "application/json"
                 }
             )
+            logger.info(f"Received response from Ollama API: {response.status_code}")
             response.raise_for_status()
             data = response.json()
+            logger.debug(f"Response JSON: {json.dumps(data)}")
             summary = data.get('response', 'No summary available.')
-            await ctx.send(summary)
-        except httpx.HTTPError as e:
+            # Split the summary if it's longer than 2000 characters
+            if len(summary) > 2000:
+                chunks = [summary[i:i+2000] for i in range(0, len(summary), 2000)]
+                for chunk in chunks:
+                    await ctx.send(chunk)
+            else:
+                await ctx.send(summary)
+        except httpx.HTTPStatusError as e:
+            logger.error(f"HTTP status error: {e.response.status_code} - {e.response.text}")
             await ctx.send("Sorry, I couldn't process your request due to an HTTP error.")
-            self.bot.logger.error(f"HTTP error occurred: {e}")
+        except httpx.RequestError as e:
+            logger.error(f"Request error: {e}")
+            await ctx.send("Sorry, I couldn't process your request due to a network error.")
         except Exception as e:
+            logger.error(f"Unexpected error: {e}", exc_info=True)
             await ctx.send("⚠️ An unexpected error occurred while processing your command.")
-            self.bot.logger.error(f"Unexpected error: {e}", exc_info=True)
 
 def setup(bot):
     bot.add_cog(LLMCog(bot))

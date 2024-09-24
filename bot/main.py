@@ -133,10 +133,11 @@ async def on_ready():
 
 @bot.event
 async def on_command_error(ctx, error):
-    """
-    Global error handler for commands.
-    Handles common errors and logs unexpected ones.
-    """
+    # Ignore errors that have been handled in commands
+    if hasattr(ctx.command, 'on_error'):
+        return
+
+    # Proceed with handling
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("❓ Sorry, I didn't understand that command.")
     elif isinstance(error, commands.MissingRequiredArgument):
@@ -147,6 +148,7 @@ async def on_command_error(ctx, error):
         # For unexpected errors, log the exception and inform the user
         logger.error(f"⚠️ An error occurred: {error}", exc_info=True)
         await ctx.send("⚠️ An unexpected error occurred while processing your command.")
+
 
 # ----------------------------------
 # 7. Bot Commands (Custom Help)
