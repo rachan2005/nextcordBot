@@ -3,6 +3,7 @@
 import os
 import httpx
 import asyncio
+import json
 from nextcord.ext import commands
 from nextcord import Embed
 
@@ -11,7 +12,7 @@ class LLMCog(commands.Cog):
         self.bot = bot
         self.api_url = os.getenv('OLLAMA_API_URL', 'http://ollama:11434')
         self.api_key = os.getenv('OLLAMA_API_KEY')  # If Ollama requires an API key
-        self.model = os.getenv('OLLAMA_MODEL', 'llama3.1')  # Ensure this matches the correct model name
+        self.model = os.getenv('OLLAMA_MODEL', 'llama3.1')  # Ensure this matches the model name
         self.client = httpx.AsyncClient()
 
     def cog_unload(self):
@@ -22,15 +23,16 @@ class LLMCog(commands.Cog):
         """Asks a question to the LLM."""
         await ctx.trigger_typing()
         try:
+            payload = {
+                "model": self.model,
+                "prompt": question,
+                "max_tokens": 2000,
+                "temperature": 0.7,
+                "stream": False
+            }
             response = await self.client.post(
-                f"{self.api_url}/v1/completions",  # Corrected endpoint based on the API documentation
-                json={
-                    "model": self.model,
-                    "prompt": question,
-                    "max_tokens": 150,
-                    "temperature": 0.7,
-                    "stream": True  # Set to True if you want streaming responses
-                },
+                f"{self.api_url}/api/generate",  # Corrected endpoint
+                json=payload,
                 headers={
                     "Authorization": f"Bearer {self.api_key}" if self.api_key else "",
                     "Content-Type": "application/json"
@@ -40,12 +42,18 @@ class LLMCog(commands.Cog):
             data = response.json()
             completion = data.get('response', 'No response.')
             await ctx.send(completion)
-        except httpx.HTTPError as e:
+        except httpx.HTTPStatusError as e:
             await ctx.send("Sorry, I couldn't process your request due to an HTTP error.")
             self.bot.logger.error(f"HTTP error occurred: {e}")
         except Exception as e:
             await ctx.send("⚠️ An unexpected error occurred while processing your command.")
             self.bot.logger.error(f"Unexpected error: {e}", exc_info=True)
+
+    # Similarly update the summarize command
+
+
+    # Similarly update the summarize command
+
 
     @commands.command(name='summarize')
     async def summarize_llm(self, ctx, *, text: str):
@@ -54,7 +62,7 @@ class LLMCog(commands.Cog):
         try:
             prompt = f"Summarize the following text:\n{text}"
             response = await self.client.post(
-                f"{self.api_url}/v1/completions",  # Corrected endpoint based on the API documentation
+                f"{self.api_url}/api/generate",  # Corrected endpoint based on the API documentation
                 json={
                     "model": self.model,
                     "prompt": prompt,

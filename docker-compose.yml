@@ -11,14 +11,9 @@ services:
       - db
       - ollama
     ports:
-      - "8080:8080"  # Adjust if needed
+      - "8080:8080"
     volumes:
-      - .:/app  # Mount current directory if necessary
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
+      - .:/app
 
   db:
     image: postgres:14
@@ -41,20 +36,12 @@ services:
       - "11434:11434"
     restart: unless-stopped
     volumes:
-      - ollama-data:/ollama/data
+      - ollama-data:/root/.ollama  # Map the host volume to Ollama's data directory
     deploy:
       resources:
         reservations:
           devices:
             - capabilities: [gpu]
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [compute, utility]
-
 volumes:
   db-data:
   ollama-data:

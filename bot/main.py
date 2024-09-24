@@ -1,5 +1,5 @@
 # bot/main.py
-
+import httpx
 import os
 import logging
 import nextcord  # Import nextcord directly to access Intents
@@ -94,6 +94,33 @@ def load_extensions():
 # ----------------------------------
 # 6. Bot Event Handlers
 # ----------------------------------
+@bot.event
+async def on_ready():
+    """
+    Event handler for when the bot has successfully connected to Discord.
+    Logs the bot's username and ID.
+    """
+    logger.info(f'🔗 Logged in as {bot.user} (ID: {bot.user.id})')
+    logger.info('🚀 Bot is ready and operational!')
+
+    # Load the model in Ollama
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(
+                f"{OLLAMA_API_URL}/api/generate",
+                json={
+                    "model": OLLAMA_MODEL,
+                    "prompt": ""
+                },
+                headers={
+                    "Authorization": f"Bearer {OLLAMA_API_KEY}" if OLLAMA_API_KEY else "",
+                    "Content-Type": "application/json"
+                }
+            )
+            response.raise_for_status()
+            logger.info(f"✅ Model '{OLLAMA_MODEL}' loaded successfully in Ollama.")
+        except Exception as e:
+            logger.error(f"❌ Failed to load model '{OLLAMA_MODEL}' in Ollama: {e}")
 
 @bot.event
 async def on_ready():
