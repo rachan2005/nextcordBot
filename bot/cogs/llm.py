@@ -7,7 +7,7 @@ import json
 from nextcord.ext import commands
 from nextcord import Embed
 import logging
-
+from httpx import Timeout
 # Create a logger for the cog
 logger = logging.getLogger(__name__)
 
@@ -18,6 +18,8 @@ class LLMCog(commands.Cog):
         self.api_key = os.getenv('OLLAMA_API_KEY')  # If Ollama requires an API key
         self.model = os.getenv('OLLAMA_MODEL', 'llama3.1')  # Ensure this matches the model name
         self.client = httpx.AsyncClient()
+        timeout = Timeout(30.0)  # Set timeout to 30 seconds
+        self.client = httpx.AsyncClient(timeout=timeout)
 
     def cog_unload(self):
         asyncio.create_task(self.client.aclose())
@@ -30,7 +32,7 @@ class LLMCog(commands.Cog):
             payload = {
                 "model": self.model,
                 "prompt": question,
-                "max_tokens": 10000,  # Increase max_tokens if necessary
+                "max_tokens": 20000,  # Increase max_tokens if necessary
                 "temperature": 0.7,
                 "stream": False
             }
@@ -49,11 +51,11 @@ class LLMCog(commands.Cog):
             logger.debug(f"Response JSON: {json.dumps(data)}")
             completion = data.get('response', 'No response.')
             # Split the response if it's longer than 2000 characters
-            if len(completion) > 350:
-                chunks = [completion[i:i+350] for i in range(0, len(completion), 350)]
+            if len(completion) > 2000:
+                chunks = [completion[i:i+2000] for i in range(0, len(completion), 2000)]
                 for chunk in chunks:
                     await ctx.send(chunk)
-                    await asyncio.sleep(3)
+                    await asyncio.sleep(0)
             else:
                 await ctx.send(completion)
         except httpx.HTTPStatusError as e:
